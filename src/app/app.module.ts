@@ -11,6 +11,8 @@ import { AddProductsComponent } from './components/products/add-products/add-pro
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
+import { ServerComponent } from './components/server/server.component';
+import { PartComponent } from './components/part/part.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductListComponent } from './components/products/product-list/product
     AddProductsComponent,
     CustomerDetailsComponent,
     CustomerListComponent,
-    ProductListComponent
+    ProductListComponent,
+    ServerComponent,
+    PartComponent
   ],
   imports: [
     BrowserModule,

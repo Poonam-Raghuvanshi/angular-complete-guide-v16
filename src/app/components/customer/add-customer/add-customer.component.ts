@@ -16,11 +16,12 @@ export class AddCustomerComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   
+   // this.customerReg.setValue({}) can use this to set whole form value
+   // this.customerReg.form.patchValue({}) can use this to set part of the value
   }
+
   saveCustomer(form: NgForm){
      console.log(form.value);
-  }
-  
+  } 
 
 }
