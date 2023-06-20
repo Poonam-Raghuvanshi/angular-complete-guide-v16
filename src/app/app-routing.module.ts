@@ -10,8 +10,14 @@ import { ProductListComponent } from './components/product/product-list/product-
 
 const routes: Routes = [
   {path:'', component:HomePageComponent},
-  {path:'customers', component:CustomerListComponent},
-  {path:'products', component:ProductListComponent}
+  {path:'customers', component:CustomerListComponent, children:[
+    {path:':id/view', component:CustomerDetailsComponent},
+    {path:'add', component:AddCustomerComponent}
+  ]},
+  {path:'products', component:ProductListComponent, children:[
+    {path:':id/view', component:ProductDetailsComponent},
+    {path:'add', component:AddProductsComponent}
+  ]}
 ];
 
 @NgModule({
