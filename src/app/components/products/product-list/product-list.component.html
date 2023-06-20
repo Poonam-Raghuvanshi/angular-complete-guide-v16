@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Production Date</th>
+        <th scope="col">Expiry Date</th>
+      </tr>
+    </thead>
+    <ng-container *ngIf="allProducts.length > 0; else displayNone">
+      <tbody class="table-group-divider">
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </ng-container>
+    <ng-template #displayNone>
+      <div>No Products to display</div>
+    </ng-template>
+  </table>
+</div>

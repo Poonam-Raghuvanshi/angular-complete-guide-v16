@@ -9,7 +9,7 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
-import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductListComponent } from './components/products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
