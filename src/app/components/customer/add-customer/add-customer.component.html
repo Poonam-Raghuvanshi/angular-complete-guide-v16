@@ -1,1 +1,124 @@
-<p>add-customer works!</p>
+<form #customerReg="ngForm" (ngSubmit)="saveCustomer(customerReg)">
+  <h2>Customer Registration</h2>
+  <!-- ngModelGroup let us that all the form controls will be available under userData -->
+  <div ngModelGroup="userData" #userData="ngModelGroup">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        name="firstName"
+        type="text"
+        class="form-control"
+        id="firstName"
+        aria-describedby="firstHelp"
+        ngModel
+        required #firstName="ngModel"
+      />
+      <div
+        id="firstHelp"
+        class="form-text"
+        *ngIf="firstName.invalid && firstName.touched"
+      >
+        Please enter the first name
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        aria-describedby="lastHelp"
+        ngModel
+        required
+        #lastName="ngModel"
+      />
+      <div
+        id="lastHelp"
+        class="form-text"
+        *ngIf="lastName.invalid && lastName.touched"
+      >
+        Please enter the last name
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        aria-describedby="emailHelp"
+        ngModel
+        email
+        #email="ngModel"
+      />
+      <div
+        id="emailHelp"
+        class="form-text"
+        *ngIf="email.invalid && email.touched"
+      >
+       Enter a valid email
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        name="age"
+        id="age"
+        aria-describedby="ageHelp"
+        ngModel
+      />
+      <div id="ageHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone number</label>
+      <input
+        type="number"
+        class="form-control"
+        name="phoneNumber"
+        id="phoneNumber"
+        aria-describedby="phoneNumberHelp"
+        ngModel
+      />
+      <div id="phoneNumberHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Gender</label>
+      <div class="form-check form-check-inline" *ngFor="let gen of genders">
+        <label>
+          <input type="radio" name="gender" ngModel [value]="gen"/> {{gen}}
+        </label>
+       
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea
+        class="form-control"
+        id="address"
+        aria-describedby="addressHelp"
+        ngModel
+        name="address"
+      ></textarea>
+      <div id="addressHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="customerReg.invalid"> Add Customer </button>
+  </div>
+</form>

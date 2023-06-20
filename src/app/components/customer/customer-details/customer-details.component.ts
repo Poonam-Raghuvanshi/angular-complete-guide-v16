@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { Customer } from 'src/app/data/customer';
 
 @Component({
   selector: 'app-customer-details',

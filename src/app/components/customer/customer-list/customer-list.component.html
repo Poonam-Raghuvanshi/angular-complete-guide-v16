@@ -10,20 +10,24 @@
         <th scope="col">View Details</th>
       </tr>
     </thead>
-    <ng-container *ngIf="allCustomers.length > 0; else displayNone">
-      <tbody class="table-group-divider">
+
+    <tbody class="table-group-divider">
+      <ng-container *ngIf="allCustomers.length > 0; else displayNone">
         <tr *ngFor="let cust of allCustomers; let i = index">
           <th scope="row">{{ i }}</th>
           <td>{{ cust.firstName }}</td>
           <td>{{ cust.lastName }}</td>
           <td>{{ cust.phoneNumber }}</td>
           <td>{{ cust.gender }}</td>
-          <td>{{ cust.email }}</td>
+          <td><button type="button" class="btn btn-success" routerLink="i/view"> Show Details </button></td>
         </tr>
-      </tbody>
-    </ng-container>
-    <ng-template #displayNone>
-      <div>No Customers to display</div>
-    </ng-template>
+      </ng-container>
+      <ng-template #displayNone>
+        <div>No Customers to display</div>
+      </ng-template>
+    </tbody>
   </table>
+  <div class="col-sm-12 col-md-12">
+    <router-outlet></router-outlet>
+  </div>
 </div>

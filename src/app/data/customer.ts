@@ -3,11 +3,12 @@ export class Customer {
   firstName: string = '';
   lastName: string = '';
   phoneNumber:number=0;
+  age:number=0;
   email:string="";
   address:string="";
   gender:string="";
 
-  constructor( id: number, firstName: string, lastName: string,email: string, phoneNumber:number, address: string, gender:string){
+  constructor( id: number, firstName: string, lastName: string, email: string, phoneNumber:number, address: string, gender:string, age:number){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -15,6 +16,7 @@ export class Customer {
         this.phoneNumber=phoneNumber;
         this.address=address;
         this.gender=address;
+        this.age=age;
     }
 
 }

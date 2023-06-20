@@ -9,8 +9,9 @@
         <th scope="col">Expiry Date</th>
       </tr>
     </thead>
-    <ng-container *ngIf="allProducts.length > 0; else displayNone">
-      <tbody class="table-group-divider">
+
+    <tbody class="table-group-divider">
+      <ng-container *ngIf="allProducts.length > 0; else displayNone">
         <tr>
           <th scope="row">1</th>
           <td>Mark</td>
@@ -18,10 +19,10 @@
           <td>@mdo</td>
           <td>@mdo</td>
         </tr>
-      </tbody>
-    </ng-container>
-    <ng-template #displayNone>
-      <div>No Products to display</div>
-    </ng-template>
+      </ng-container>
+      <ng-template #displayNone>
+        <div>No Products to display</div>
+      </ng-template>
+    </tbody>
   </table>
 </div>
