@@ -12,7 +12,8 @@
     </thead>
 
     <tbody class="table-group-divider">
-      <ng-container *ngIf="allCustomers.length > 0; else displayNone">
+      <p [appHighlight]="'red'" defaultColor="yellow">Hello World</p>
+      <ng-container *ngIf="allCustomers.length > 0; else displayNone" >
         <tr *ngFor="let cust of allCustomers; let i = index">
           <th scope="row">{{ i }}</th>
           <td>{{ cust.firstName }}</td>

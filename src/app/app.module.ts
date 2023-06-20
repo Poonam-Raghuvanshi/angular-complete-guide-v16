@@ -13,6 +13,9 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ServerComponent } from './components/server/server.component';
 import { PartComponent } from './components/part/part.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -25,12 +28,14 @@ import { PartComponent } from './components/part/part.component';
     CustomerListComponent,
     ProductListComponent,
     ServerComponent,
-    PartComponent
+    PartComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
