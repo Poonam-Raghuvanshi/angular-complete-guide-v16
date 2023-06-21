@@ -1,5 +1,10 @@
 import { NgModule, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterModule, Routes, createUrlTreeFromSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  RouterModule,
+  Routes,
+  createUrlTreeFromSnapshot,
+} from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AddCustomerComponent } from './components/customer/add-customer/add-customer.component';
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
@@ -11,30 +16,41 @@ import { CustomerService } from './service/customer.service';
 import { map } from 'rxjs/operators';
 
 const routes: Routes = [
-  {path:'', component:HomePageComponent},
-  {path:'customers', component:CustomerListComponent, children:[
-    {path:':id/view', component:CustomerDetailsComponent},
-    {path:'add', component:AddCustomerComponent}
-  ]},
-  {path:'products', component:ProductListComponent, children:[
-    {path:':id/view', component:ProductDetailsComponent},
-    {path:'add', component:AddProductsComponent}
-  ],canActivate: [
-    (next: ActivatedRouteSnapshot) => {
-      return inject(CustomerService)
-        .isLoggedIn().pipe(
-          map((isLoggedIn) => 
-            isLoggedIn ? true : createUrlTreeFromSnapshot(next, ['/', ' '])
-          )
-        );
-    },
-  ]},
-  {path:'**', redirectTo:'', pathMatch: 'full'}  // Wildcard route should be the last statement
+  { path: '', component: HomePageComponent },
+  {
+    path: 'customers',
+    component: CustomerListComponent,
+    children: [
+      { path: ':id/view', component: CustomerDetailsComponent },
+      { path: 'add', component: AddCustomerComponent },
+    ],
+    data: { message: 'hello world' },
+  },
+  {
+    path: 'products',
+    component: ProductListComponent,
+    children: [
+      { path: ':id/view', component: ProductDetailsComponent },
+      { path: 'add', component: AddProductsComponent },
+    ],
+    canActivate: [
+      (next: ActivatedRouteSnapshot) => {
+        return inject(CustomerService)
+          .isLoggedIn()
+          .pipe(
+            map((isLoggedIn) =>
+              isLoggedIn ? true : createUrlTreeFromSnapshot(next, ['/', ' '])
+            )
+          );
+      },
+    ],
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' }, // Wildcard route should be the last statement
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
+  exports: [RouterModule],
 })
 // Relative paths get appended while absolute path not /server
-export class AppRoutingModule { }
+export class AppRoutingModule {}
