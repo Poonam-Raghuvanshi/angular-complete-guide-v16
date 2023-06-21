@@ -23,5 +23,6 @@ export class AddCustomerComponent implements OnInit {
   saveCustomer(form: NgForm) {
    // console.log(form.value);
     this.customerService.addCustomer(form.value.userData);
+    form.reset();
   }
 }
