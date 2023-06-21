@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
   serverElements = [{type: 'server', name: 'Testserver', content: 'Just a test!', procurement: 2015, isactive: 'yes'}];
+
+  //ActivatedRoute knows the current path of component while router.navigate doesn't
+  constructor(private router:Router, private activatedRoute:ActivatedRoute){
+
+  }
 
   onServerAdded(serverData: {serverName: string, serverContent: string}) {
     this.serverElements.push({
@@ -27,5 +33,16 @@ export class HomePageComponent {
       isactive: 'yes'
     });
   }
+
+  navigateToAddCustomer(){
+       this.router.navigate(['/customers/add'],{relativeTo:this.activatedRoute});
+       //this.activatedRoute.snapshot.params['id']
+       // //this.activatedRoute.params.subscribe()  angular will clean up this subscription
+
+  }
+
+  navigateToAddProduct(){
+    this.router.navigate(['/products/add'],{relativeTo:this.activatedRoute});
+}
 
 }
