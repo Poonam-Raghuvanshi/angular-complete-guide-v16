@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, inject } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterModule, Routes, createUrlTreeFromSnapshot } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AddCustomerComponent } from './components/customer/add-customer/add-customer.component';
 import { AddProductsComponent } from './components/products/add-products/add-products.component';
@@ -7,6 +7,8 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
+import { CustomerService } from './service/customer.service';
+import { map } from 'rxjs/operators';
 
 const routes: Routes = [
   {path:'', component:HomePageComponent},
@@ -17,7 +19,17 @@ const routes: Routes = [
   {path:'products', component:ProductListComponent, children:[
     {path:':id/view', component:ProductDetailsComponent},
     {path:'add', component:AddProductsComponent}
-  ]}
+  ],canActivate: [
+    (next: ActivatedRouteSnapshot) => {
+      return inject(CustomerService)
+        .isLoggedIn().pipe(
+          map((isLoggedIn) => 
+            isLoggedIn ? true : createUrlTreeFromSnapshot(next, ['/', ' '])
+          )
+        );
+    },
+  ]},
+  {path:'**', redirectTo:'', pathMatch: 'full'}  // Wildcard route should be the last statement
 ];
 
 @NgModule({

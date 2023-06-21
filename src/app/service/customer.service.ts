@@ -1,11 +1,12 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Customer } from '../data/customer';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-
+ 
  // statusUpdated=new EventEmitter<string>();
   allCustomers: Customer[] = [
     new Customer(1,"Poonam","Raghuvanshi","raghu43@gmail.com",976454,"Stradiviras store","female",10),
@@ -13,6 +14,10 @@ export class CustomerService {
     new Customer(3,"Priya","Sharma","priya6@outlook.com",5463337,"Near Saint maisons","female",20)
   ];
   constructor() { }
+
+  isLoggedIn():Observable<boolean>{
+    return of(false);
+  }
 
   addCustomer(cust:Customer){
       this.allCustomers.push(cust);
