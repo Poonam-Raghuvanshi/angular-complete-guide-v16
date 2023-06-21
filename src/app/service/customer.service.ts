@@ -16,7 +16,7 @@ export class CustomerService {
   constructor() { }
 
   isLoggedIn():Observable<boolean>{
-    return of(false);
+    return of(true);
   }
 
   addCustomer(cust:Customer){

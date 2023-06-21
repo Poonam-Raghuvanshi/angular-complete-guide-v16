@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,9 @@ import { ServerComponent } from './components/server/server.component';
 import { PartComponent } from './components/part/part.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { CommonModule } from '@angular/common';
+import { NotesComponent } from './components/notes/notes.component';
+import { LoggingInterceptorService } from './interceptors/logging-interceptors.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,15 +32,21 @@ import { CommonModule } from '@angular/common';
     ProductListComponent,
     ServerComponent,
     PartComponent,
-    HighlightDirective
+    HighlightDirective,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoggingInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
