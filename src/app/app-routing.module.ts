@@ -24,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+// Relative paths get appended like /server
 export class AppRoutingModule { }

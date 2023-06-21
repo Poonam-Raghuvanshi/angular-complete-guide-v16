@@ -13,8 +13,8 @@
 
     <tbody class="table-group-divider">
       <p [appHighlight]="'red'" defaultColor="yellow">Hello World</p>
-      <ng-container *ngIf="allCustomers.length > 0; else displayNone" >
-        <tr *ngFor="let cust of allCustomers; let i = index">
+      <ng-container *ngIf="custList.length > 0; else displayNone" >
+        <tr *ngFor="let cust of custList; let i = index">
           <th scope="row">{{ i }}</th>
           <td>{{ cust.firstName }}</td>
           <td>{{ cust.lastName }}</td>
@@ -28,6 +28,9 @@
       </ng-template>
     </tbody>
   </table>
+  <div>
+    <button type="button" class="btn btn-success" routerLink="add"> Add Customer </button>
+  </div>
   <div class="col-sm-12 col-md-12">
     <router-outlet></router-outlet>
   </div>

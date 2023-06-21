@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Customer } from 'src/app/data/customer';
+import { CustomerService } from 'src/app/service/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,16 +9,15 @@ import { Customer } from 'src/app/data/customer';
 })
 export class CustomerListComponent implements OnInit, OnDestroy {
 
-  allCustomers: Customer[] = [
-    new Customer(1,"Poonam","Raghuvanshi","raghu43@gmail.com",976454,"Stradiviras store","female",10),
-    new Customer(2,"Jean","Francois","cornu5@gmail.com",54637,"Paramaeasan","male",20),
-    new Customer(3,"Priya","Sharma","priya6@outlook.com",5463337,"Near Saint maisons","female",20)
-  ];
+  custList: Customer[] = [];
 
-  constructor() {}
+  constructor(private customerService:CustomerService) {
+    // Another way of injecting the logging service
+    //  this.loggingService = inject(CustomerService);
+  }
 
   ngOnInit(): void {
-   
+   this.custList= this.customerService.allCustomers;
   }
 
   ngOnDestroy(): void {
