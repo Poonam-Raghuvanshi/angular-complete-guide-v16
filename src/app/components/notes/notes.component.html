@@ -1,11 +1,42 @@
 <div class="container">
-  <p>
+  <div>
     Observables and Subjects are part of the reactive programming paradigm and
     deal with streams of values over time. They provide more flexibility,
     support for multiple subscribers, and a rich set of operators for working
     with asynchronous data. Promises, on the other hand, are designed for
     handling single asynchronous operations and provide a simpler syntax for
     handling asynchronous results.
-  </p>
-  <p>Subjects next can be called from outside. Unsubscribe to subjects when you don't need them</p>
+
+    <p>
+      Subjects next can be called from outside. Unsubscribe to subjects when you
+      don't need them
+    </p>
+  </div>
+  <div>
+    A bootstrapped component is an entry component that Angular loads into the
+    DOM during the bootstrap process (application launch). Other entry
+    components are loaded dynamically by other means, such as with the router.
+    Angular loads a root AppComponent dynamically because it's listed by type in
+    @NgModule.bootstrap.
+  </div>
+  <div>
+    <p>Creating a host view</p>
+    <div>
+      Host views are created when a component is dynamically instantiated. A
+      component can be created dynamically using ComponentFactoryResolver: 
+
+      <!-- constructor(private injector: Injector, private r: ComponentFactoryResolver) { let factory =
+      this.r.resolveComponentFactory(ColorComponent); let componentRef =
+      factory.create(injector); let view = componentRef.hostView; }
+       -->
+      In Angular,
+      each component is bound to a particular instance of an injector, so were
+      passing the current injector instance when creating the component. Also,
+      dont forget that components that are instantiated dynamically must be
+      added to the EntryComponents of a module or hosting component.
+    </div>
+  </div>
+  <p> preloadingstrategy: preloadAllModules</p>
+  <p>bootstrapApplication(AppComponent) in main.ts  loadComponent() to lazy load the Standalone components</p>
+  <p>createCustomElements from @angular/elements</p>
 </div>
